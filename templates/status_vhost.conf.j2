@@ -2,12 +2,12 @@
     ServerName localhost
     DocumentRoot "/"
 
-    {% if 'php5-fpm' in php_packages %}
+    {% if 'php5.6-fpm' in php_packages %}
         <FilesMatch "^fpm-ping|fpm-status$">
             Require all granted
             Order allow,deny
             Allow from all
-            SetHandler "proxy:unix:/run/php5-fpm.sock|fcgi://localhost/"
+            SetHandler proxy:fcgi://{{ php_fpm_listen }}
         </FilesMatch>
     {% endif %}
 
@@ -16,7 +16,7 @@
             Require all granted
             Order allow,deny
             Allow from all
-            SetHandler "proxy:unix:/run/php/php7.0-fpm.sock|fcgi://localhost/"
+            SetHandler proxy:fcgi://{{ php_fpm_listen }}
         </FilesMatch>
     {% endif %}
 

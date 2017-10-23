@@ -2,7 +2,7 @@
 http_user: www-data
 # Disables all permission operations
 skip_permissions: false
-syslog_name: apache
+syslog_name: local7
 
 fpm_status_path: '/fpm-status'
 fpm_ping_path: '/fpm-ping'
